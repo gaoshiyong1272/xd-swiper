@@ -12,8 +12,9 @@
   },
   "dependencies": {
     "core-js": "^2.6.10",
-    "vue": "^2.6.10",
     "gxd-helper": "^1.2.11",
+    "gxds-editer": "^1.0.6",
+    "vue": "^2.6.10",
     "wangeditor": "^4.3.0"
   },
   "devDependencies": {
