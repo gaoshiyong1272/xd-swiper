@@ -1,16 +1,16 @@
-# Gxd-vue-base
+# Gxd-swiper
 
 #### 介绍
-vue cli 初始化vue项目基础模块（纯净版本）
+vue 简化swiper的使用, 常用几种模式，参考网址： https://www.swiper.com.cn/
 
-##### 项目下载与初始化
+#### 项目下载与初始化
 
 ```bash
 # 克隆项目
-git clone git@gitee.com:e56buy/xd-vue-base.git
+git clone git@github.com:gaoshiyong1272/xd-swiper.git
 
 # 进入项目目录
-cd xd-vue-base
+cd xd-swiper
 
 # 安装依赖
 npm install
@@ -20,25 +20,42 @@ npm install --save --registry=https://registry.npm.taobao.org
 
 # 启动服务
 npm run dev
+
 ```
 
-##### 项目git迁移相关操作
+#### 预览
+```markdown
+![demo](http://static.e56buy.com/1610238353869.jpg "demo")
+```
 
+#### 安装
 ```bash
-$ cd /project/
-
-$ git remote remove origin  //与远端断开联系
-
-$ git remote add origin git@github.com:xxxxxxxxxxxxxxxx.git  ///与远端建立联系
-
-$ git push -u -f origin master //把本地分支强制推送到远端
-
-$ git push --tags   //把本地tags强制推送到远端
-
-$ git push -u -f  --all origin 把所有分支推送到远端
-
-$ git config --global gitflow.multi-release true #建立多分枝
-$ git config --global gitflow.multi-hotfix true #建立多分枝
-
+npm i gxd-swiper --save --registry  https://registry.npm.taobao.org
 ```
+
+#### 插件引用
+``` javascript
+
+//初始化自定义插件
+
+1.全局引用
+import vueSwiper from 'gxd-swiper';
+Vue.use(vueSwiper);
+
+2.局部引用
+import vueSwiper from 'gxd-swiper';
+let {XdEditor, XdQiniuEditor} = vueSwiper;
+
+export default {
+    ...
+    components: {
+        XdSwiper,
+        XdThumbSwiper
+    }
+    ...
+}
+```
+
+
+
 

@@ -35,7 +35,7 @@ const settings = {
    * @type {number}
    * @description  开发环境端口号
    */
-  port: 8057,
+  port: 8040,
 
 }
 

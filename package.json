@@ -1,21 +1,25 @@
 {
-  "name": "xd-editer",
-  "version": "0.1.0",
-  "private": true,
+  "name": "gxd-swiper",
+  "version": "1.0.0",
+  "private": false,
+  "description": "简化swiper的使用, 常用几种模式，参考网址： https://www.swiper.com.cn/",
   "scripts": {
-    "library": "vue-cli-service build --no-clean --target lib --name editer --dest lib --entry src/install.js",
-    "library:dev": "vue-cli-service build --no-clean --target lib --name editerSource --dest lib --entry src/install.js",
-    "remove": "rm ./lib/editerSource.common.js && rm ./lib/editerSource.umd.min.js && rm ./lib/editer.common.js &&  rm ./lib/editer.umd.js",
-    "dev": "vue-cli-service serve",
+    "library": "vue-cli-service build --no-clean --target lib --name gxd --dest lib --entry src/install.js",
+    "library:dev": "vue-cli-service build --no-clean --target lib --name gxdSource --dest lib --entry src/install.js",
+    "remove": "rm ./lib/gxdSource.common.js && rm ./lib/gxdSource.umd.min.js && rm ./lib/gxd.common.js &&  rm ./lib/gxd.umd.js && rm ./lib/demo.html",
     "build": "npm run library && npm run library:dev && npm run remove",
+    "dev": "vue-cli-service serve",
     "lint": "vue-cli-service lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gaoshiyong1272/xd-swiper.git"
+  },
+  "keywords": [],
   "dependencies": {
     "core-js": "^2.6.10",
-    "gxd-helper": "^1.2.11",
-    "gxds-editer": "^1.0.6",
-    "vue": "^2.6.10",
-    "wangeditor": "^4.3.0"
+    "gxd-helper": "^1.2.15",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.0",
@@ -29,7 +33,9 @@
     "sass-loader": "^10.0.5",
     "script-ext-html-webpack-plugin": "^2.1.5",
     "uglifyjs-webpack-plugin": "^1.1.1",
-    "require-context": "^1.1.0"
+    "require-context": "^1.1.0",
+    "less": "^3.12.2",
+    "less-loader": "^7.0.1"
   },
   "eslintConfig": {
     "root": true,

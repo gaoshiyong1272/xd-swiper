@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-// import editer from 'gxds-editer';
-// Vue.use(editer, {});
+import install from "./install";
+Vue.use(install)
 
 Vue.config.productionTip = false
 

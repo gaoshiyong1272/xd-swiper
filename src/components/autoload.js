@@ -1,7 +1,9 @@
 'use strict';
 
-import HelloWorld from './HelloWorld';
+import XdSwiper from './XdSwiper';
+import XdThumbSwiper from './XdThumbSwiper';
 
 export default [
-  HelloWorld
+  XdSwiper,
+  XdThumbSwiper
 ]
