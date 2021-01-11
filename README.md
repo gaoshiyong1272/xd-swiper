@@ -34,7 +34,7 @@ npm i gxd-swiper --save --registry  https://registry.npm.taobao.org
 ```
 
 #### 插件引用
-``` javascript
+``` text
 
 //初始化自定义插件
 
