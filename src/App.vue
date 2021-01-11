@@ -1,36 +1,35 @@
 <template>
   <div id="app">
-    <xd-swiper
-      :list="list"
+    <xd-thumb-swiper
+      :autoplay="autoplay"
       :height="height"
       :width="width"
-      :autoplay="autoplay"
+      :animation="animation"
       :next-prve-button="nextPrveButton"
-      :pagination-pos="paginationPos"
-      :pagination-custom-css="paginationCustomCss"
-      :pagination-type="paginationType"
-    >
-      <template slot-scope="{item}">
-        {{item}}
-      </template>
-    </xd-swiper>
+      :border="border"
+      :bg="bg"
+      :custom-css="customCss"
+      :list="list"
+    ></xd-thumb-swiper>
   </div>
 </template>
 
 <script>
 
+  import XdThumbSwiper from "@/components/XdThumbSwiper";
   export default {
     name: 'app',
-    components: {},
+    components: {XdThumbSwiper},
     data() {
       return {
-        height: 300, //轮播图高度
+        height: 400, //轮播图高度
         width: 600, //轮播图宽度
         autoplay: 5000, //轮播图自动轮播毫秒,0=>不轮播
         nextPrveButton: true, //显示左右上一张和下一张按钮
-        paginationPos: 10, //分页器距离底部像素
-        paginationType: 'dot', //分页器样式 dot=>点 number=>数字 block=>方块显示
-        paginationCustomCss: '', //分页器自定义样式名称
+        border: '1px solid #4285F4', //边框样式
+        customCss: '', //分页器自定义样式名称
+        animation: 'slide',//cube,fade,coverflow,flip,slide 默认slide
+        bg: '#f8f8f8',
         list: [//列表图片
           {image: 'http://testimg.tiangongy.com/FhEb9W7wSyxqJGkvmk3IS_L74okx', url: 'https://fanyi.baidu.com/'},
           {image: 'http://testimg.tiangongy.com/FtjhbBgx-pOvd1_IV-8RrMiwSDf_', url: 'https://fanyi.baidu.com/'},

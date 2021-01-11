@@ -2,7 +2,7 @@
   "name": "gxd-swiper",
   "version": "1.0.0",
   "private": false,
-  "description": "简化swiper的使用, 常用几种模式，参考网址： https://www.swiper.com.cn/",
+  "description": "简化swiper的使用, 常用轮播图模式，参考网址： https://www.swiper.com.cn/",
   "scripts": {
     "library": "vue-cli-service build --no-clean --target lib --name gxd --dest lib --entry src/install.js",
     "library:dev": "vue-cli-service build --no-clean --target lib --name gxdSource --dest lib --entry src/install.js",
@@ -15,7 +15,19 @@
     "type": "git",
     "url": "git@github.com:gaoshiyong1272/xd-swiper.git"
   },
-  "keywords": [],
+  "keywords": [
+    "gxd",
+    "gxd-swiper",
+    "gxd swiper",
+    "swiper",
+    "vue-swiper",
+    "vue swiper",
+    "swiper-vue",
+    "焦点图片",
+    "焦点图+缩略展示",
+    "thumb swiper",
+    "thumb"
+  ],
   "dependencies": {
     "core-js": "^2.6.10",
     "gxd-helper": "^1.2.15",

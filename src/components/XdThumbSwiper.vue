@@ -1,6 +1,6 @@
 <template>
-  <div :style="`height: ${height}px; width: ${width}px; background: #ccc`">
-    <div class="swiper-container" v-if="eleId" :id="eleId">
+  <div :class="`xd-thumb-swiper ${customCss}`" :style="`width: ${width}px; height:${height}px; background: ${bg}; position: relative;`">
+    <div class="swiper-container gallery-top" :style="`border: ${border}`">
       <div class="swiper-wrapper">
         <div
           v-for="(item,index) in dataList"
@@ -12,11 +12,18 @@
           </slot>
         </div>
       </div>
-      <div :style="`bottom: ${paginationPos}px;`"
-           :class="`swiper-pagination ${paginationCustomCss ? paginationCustomCss: '' }`"></div>
-      <div v-if="nextPrveButton" class="swiper-button-next swiper-button-white"></div>
-      <div v-if="nextPrveButton" class="swiper-button-prev swiper-button-white"></div>
     </div>
+    <div class="swiper-container gallery-thumbs">
+      <div class="swiper-wrapper">
+        <div
+          v-for="(item,index) in dataList"
+          :key="index"
+          class="swiper-slide"
+          :style="`background-image:url(${item.image});border: ${border}`"></div>
+      </div>
+    </div>
+    <div v-if="nextPrveButton" class="swiper-button-next swiper-button-black"></div>
+    <div v-if="nextPrveButton" class="swiper-button-prev swiper-button-black"></div>
   </div>
 </template>
 
@@ -28,35 +35,40 @@
         type: Array,
         required: true
       },
-      paginationType: {
+
+      bg:{
         type: String,
-        default: 'block' //dot=>点 number=>数字 block=>方块显示
+        default: '#f8f8f8'
       },
 
-      /**
-       * @description 分页器位置
-       */
-      paginationPos: {
-        type: Number,
-        default: 10
+      border: {
+        type: String,
+        default: '1px solid #4285F4'
       },
 
       /***
        * @description 定义翻页器样式名称
        */
-      paginationCustomCss: {
+      customCss: {
         type: String,
-        default: 'custom',
+        default: '',
+      },
+
+      animation: {
+        type: String,
+        default: 'slide',
       },
 
       width: {
         type: Number,
         default: 600
       },
+
       height: {
         type: Number,
         default: 300
       },
+
       /**
        * @description 自动播放毫秒 0=>不轮播
        */
@@ -90,11 +102,12 @@
     data() {
       return {
         eleId: null, //id
-        api: 'https://lib.baomitu.com/Swiper/3.4.2/js/swiper.min.js',
-        css: 'https://lib.baomitu.com/Swiper/3.4.2/css/swiper.min.css',
+        api: 'https://lib.baomitu.com/Swiper/5.4.5/js/swiper.min.js',
+        css: 'https://lib.baomitu.com/Swiper/5.4.5/css/swiper.min.css',
         jsStatus: false,
         cssStatus: false,
-        dataList: []
+        dataList: [],
+        animationArray: ['cube', 'fade', 'coverflow', 'flip', 'slide'],
       }
     },
     created() {
@@ -117,33 +130,42 @@
     },
     methods: {
       init() {
+        let galleryThumbs = new window['Swiper']('.gallery-thumbs', {
+          spaceBetween: 10,
+          slidesPerView: 4,
+          loop: true,
+          freeMode: false,
+          loopedSlides: 5, //looped slides should be the same
+          watchSlidesVisibility: true,
+          watchSlidesProgress: true,
+        });
+
         let options = {
           spaceBetween: 10,
-          pagination: '.swiper-pagination',
-          paginationClickable: true,
-          paginationBulletRender: (swiper, index, className) => {
-            let html = `<span class="${className}"></span>`;
-            if (this.paginationType === 'number') {
-              html = `<span class="${className} pagination-number">${index + 1}</span>`;
-            }
-            if (this.paginationType === 'block') {
-              html = `<span class="${className} pagination-block"></span>`;
-            }
-            return html;
-          }
+          effect: this.$swiperHelper.inArray(this.animationArray,[this.animation]) ?
+            this.animation: 'slide', //cube,fade,coverflow,flip,slide
+          thumbs: {
+            swiper: galleryThumbs,
+          },
         };
 
-        if (this.autoplay) {
-          options['autoplay'] = this.autoplay;
-          options['loop'] = true;
+        if(this.autoplay>0) {
+          options['autoplay'] = {
+            delay: this.autoplay,
+            stopOnLastSlide: false,
+            disableOnInteraction: true,
+          }
+        }else{
+          options['autoplay'] = false;
         }
 
-        if (this.nextPrveButton) {
-          options['nextButton'] = '.swiper-button-next';
-          options['prevButton'] = '.swiper-button-prev';
+        if(this.nextPrveButton) {
+          options['navigation'] = {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          };
         }
-
-        new window['Swiper'](`#${this.eleId}`, options);
+        new window['Swiper']('.gallery-top', options);
       },
     }
 
@@ -151,12 +173,21 @@
 </script>
 
 <style scoped>
-  .swiper-container {
+  .xd-thumb-swiper {
+    position: relative;
+  }
+  .gallery-top {
     width: 100%;
-    height: 100%;
+    height: 80%;
     margin-left: auto;
     margin-right: auto;
   }
+
+  .swiper-wrapper {
+    box-sizing: border-box;
+  }
+
+  .gallery-thumbs {}
 
   .swiper-slide {
     background-size: cover;
@@ -171,36 +202,37 @@
     height: 100%;
   }
 
-  /deep/ .pagination-number {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    line-height: 18px;
-    font-size: 12px;
-    text-align: center;
-    color: #fff;
-    opacity: 0.7;
+  .gallery-thumbs {
+    height: 20%;
+    box-sizing: border-box;
+    padding: 10px 0;
+    margin: 0 45px;
+
   }
 
-  /deep/ .pagination-number.swiper-pagination-bullet-active {
-    font-weight: bold;
-    color: #fff;
+  .gallery-thumbs .swiper-slide {
+    height: 100%;
+    opacity: 0.4;
+    box-sizing: border-box;
+  }
+
+  .gallery-thumbs .swiper-slide-thumb-active {
     opacity: 1;
   }
 
-  /deep/ .pagination-block {
-    display: inline-block;
-    width: 35px;
-    height: 4px;
-    opacity: 0.5;
-    overflow: hidden;
-    border-radius: 0;
+  /deep/ .gallery-thumbs .swiper-slide-thumb-active {
   }
 
-  /deep/ .pagination-block.swiper-pagination-bullet-active {
-    font-weight: bold;
-    color: #fff;
-    opacity: 1;
+  .swiper-button-black {
+    top: 90%;
+    color: #D2D2D2;
+    font-size: 20px;
+    outline: none;
   }
+
+  .swiper-button-black:after {
+    font-size: 30px!important;
+  }
+
 
 </style>
