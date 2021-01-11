@@ -30,7 +30,6 @@
   ],
   "dependencies": {
     "core-js": "^2.6.10",
-    "gxd-helper": "^1.2.15",
     "vue": "^2.6.10"
   },
   "devDependencies": {
