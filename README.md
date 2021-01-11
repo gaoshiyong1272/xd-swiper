@@ -25,7 +25,8 @@ npm run dev
 
 #### 预览
 ```markdown
-![demo](http://static.e56buy.com/1610238353869.jpg "demo")
+![Image text](http://static.e56buy.com/swiper.jpg "swiper")
+![Image text](http://static.e56buy.com/swiper-thumb.jpg "swiper thumb")
 ```
 
 #### 安装

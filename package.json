@@ -1,6 +1,6 @@
 {
   "name": "gxd-swiper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "简化swiper的使用, 常用轮播图模式，参考网址： https://www.swiper.com.cn/",
   "scripts": {
