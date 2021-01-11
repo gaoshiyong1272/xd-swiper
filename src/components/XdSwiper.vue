@@ -56,6 +56,12 @@
         type: Number,
         default: 300
       },
+
+      animation: {
+        type: String,
+        default: 'slide',//cube,fade,coverflow,flip,slide 默认slide
+      },
+
       /**
        * @description 自动播放毫秒 0=>不轮播
        */
@@ -93,7 +99,8 @@
         css: 'https://lib.baomitu.com/Swiper/3.4.2/css/swiper.min.css',
         jsStatus: false,
         cssStatus: false,
-        dataList: []
+        dataList: [],
+        animationArray: ['cube', 'fade', 'coverflow', 'flip', 'slide'],
       }
     },
     created(){
@@ -131,6 +138,11 @@
             return html;
           }
         };
+
+        if(this.animation) {
+          options['effect'] = this.$swiperHelper.inArray(this.animationArray, [this.animation]) ?
+            this.animation : 'slide'; //cube,fade,coverflow,flip,slide
+        }
 
         if(this.autoplay) {
           options['autoplay'] = this.autoplay;

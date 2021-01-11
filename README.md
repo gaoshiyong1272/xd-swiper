@@ -63,6 +63,7 @@ export default {
       :width="width"
       :autoplay="autoplay"
       :next-prve-button="nextPrveButton"
+      :animation="animation"
       :pagination-pos="paginationPos"
       :pagination-custom-css="paginationCustomCss"
       :pagination-type="paginationType"
@@ -88,6 +89,7 @@ export default {
         paginationPos: 10, //分页器距离底部像素 默认10px
         paginationType: 'dot', //分页器样式 默认dot=>点， number=>数字 block=>方块显示
         paginationCustomCss: '', //分页器自定义样式名称
+        animation: 'slide',//cube,fade,coverflow,flip,slide 默认slide
         list: [//列表图片
           {image: 'http://testimg.tiangongy.com/FhEb9W7wSyxqJGkvmk3IS_L74okx', url: 'https://fanyi.baidu.com/'},
           {image: 'http://testimg.tiangongy.com/FtjhbBgx-pOvd1_IV-8RrMiwSDf_', url: 'https://fanyi.baidu.com/'},
