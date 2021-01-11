@@ -1,16 +1,12 @@
 'use strict';
 
 import components from "@/components/autoload";
-import gxdHelper from 'gxd-helper';
-let {helper} = gxdHelper;
-let helperObj = helper({});
 
 // 定义 install 方法
 const install = function (Vue, options) {
   if (install.installed) return;
   install.installed = true;
 
-  Vue.prototype.$swiperHelper = helperObj;
   if(options) Vue.prototype.$swiperOptions = options;
 
   // 遍历并注册全局组件

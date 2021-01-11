@@ -28,6 +28,7 @@
 </template>
 
 <script>
+  import helper from './helper'
   export default {
     name: "XdThumbSwiper",
     props: {
@@ -112,16 +113,16 @@
     },
     created() {
       this.dataList = this.list;
-      this.eleId = `xd-swiper-${this.$swiperHelper.random(1000000, 9999999)}`;
+      this.eleId = `xd-swiper-${helper.random(1000000, 9999999)}`;
       //加载js库
-      this.$swiperHelper.loadFile(this.api)
+      helper.loadFile(this.api)
         .then(res => {
           console.log('loadFile', res);
           this.jsStatus = true;
         })
         .catch();
       //加载css
-      this.$swiperHelper.loadFile(this.css, 'css')
+      helper.loadFile(this.css, 'css')
         .then(res => {
           console.log('loadFilecss', res);
           this.cssStatus = true;
@@ -142,7 +143,7 @@
 
         let options = {
           spaceBetween: 10,
-          effect: this.$swiperHelper.inArray(this.animationArray,[this.animation]) ?
+          effect: helper.inArray(this.animationArray,[this.animation]) ?
             this.animation: 'slide', //cube,fade,coverflow,flip,slide
           thumbs: {
             swiper: galleryThumbs,
