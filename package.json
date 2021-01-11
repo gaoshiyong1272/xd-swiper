@@ -1,12 +1,12 @@
 {
   "name": "gxd-swiper",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "private": false,
   "description": "简化swiper的使用, 常用轮播图模式，参考网址： https://www.swiper.com.cn/",
   "scripts": {
-    "library": "vue-cli-service build --no-clean --target lib --name gxd --dest lib --entry src/install.js",
+    "library": "vue-cli-service build --no-clean --target lib --name gxdMin --dest lib --entry src/install.js",
     "library:dev": "vue-cli-service build --no-clean --target lib --name gxdSource --dest lib --entry src/install.js",
-    "remove": "rm ./lib/gxdSource.common.js && rm ./lib/gxdSource.umd.min.js && rm ./lib/gxd.common.js &&  rm ./lib/gxd.umd.js && rm ./lib/demo.html",
+    "remove": "rm ./lib/gxdSource.common.js && rm ./lib/gxdSource.umd.min.js && rm ./lib/gxdMin.common.js &&  rm ./lib/gxdMin.umd.js && rm ./lib/demo.html",
     "build": "npm run library && npm run library:dev && npm run remove",
     "dev": "vue-cli-service serve",
     "lint": "vue-cli-service lint"
@@ -21,7 +21,12 @@
     "gxd swiper",
     "swiper",
     "vue-swiper",
+    "carousel",
+    "vue-carousel",
+    "vue carousel",
     "vue swiper",
+    "vue awesome swiper",
+    "vue-awesome-swiper",
     "swiper-vue",
     "焦点图片",
     "焦点图+缩略展示",

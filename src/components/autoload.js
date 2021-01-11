@@ -3,7 +3,7 @@
 import XdSwiper from './XdSwiper';
 import XdThumbSwiper from './XdThumbSwiper';
 
-export default [
+export default {
   XdSwiper,
   XdThumbSwiper
-]
+}

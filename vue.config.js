@@ -19,7 +19,7 @@ function resolve(dir) {
  */
 let plugins = [new CreatedComponentsPlugin()];
 //console.log(process.env.npm_lifecycle_script.indexOf('gxdVue'), process.env);
-if(process.env.npm_lifecycle_script.indexOf('gxdVue') !== -1) {
+if(process.env.npm_lifecycle_script.indexOf('gxdMin') !== -1) {
   plugins.push(new UglifyJsPlugin({
     uglifyOptions: {
       compress: {

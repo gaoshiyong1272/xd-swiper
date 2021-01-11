@@ -11,7 +11,7 @@ class CreatedComponentsPlugin {
       time = null;
     }
     time = setTimeout(() => {
-      autoload.createAutoload(basePath.buildComponentsDirectory, ['vue'], 'array', 'Components');
+      autoload.createAutoload(basePath.buildComponentsDirectory, ['vue'], 'object', 'Components');
     }, 30);
   }
 }

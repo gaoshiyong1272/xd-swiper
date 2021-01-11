@@ -65,8 +65,8 @@ import ${moduleName} from './${modulePath}';`;
     let content = String(buffer);
     if(type === 'object') {
       exportStr = `{
-      ${exportStr}
-      }`;
+  ${exportStr}
+}`;
     }
     if (type === 'array') {
       exportStr = `[
