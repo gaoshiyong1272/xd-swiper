@@ -42,7 +42,7 @@ Vue.use(vueSwiper);
 
 2.局部引用
 import vueSwiper from 'gxd-swiper';
-let {XdEditor, XdQiniuEditor} = vueSwiper;
+let {XdSwiper, XdThumbSwiper} = vueSwiper;
 
 export default {
     ...
